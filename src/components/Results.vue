@@ -1,13 +1,14 @@
 <template>
   <div class="results">
     <header>
-      <router-link :to="{ name: 'Hello' }" class="flex">< Back</router-link>
+      <router-link :to="{ name: 'Hello' }" class="flex back"><i class="fa fa-chevron-left"></i> Back</router-link>
       <h1 class="flex">Results</h1>
+      <a href="#" class="reset" @click.prevent="reset">Start over</a>
     </header>
     <ul>
       <li v-for="(result, i) in results" class="flex flex-column" :key="i">
         <div class="adjective">
-          <h3>{{ result.adjective }}</h3>
+          <h2>{{ result.adjective }}</h2>
         </div>
         <div class="matchup">
           <div class="contestant starwars flex-one" :style="backgroundStyle('starWars', result)">
@@ -36,7 +37,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'results',
@@ -44,6 +45,7 @@ export default {
     ...mapGetters(['results'])
   },
   methods: {
+    ...mapActions(['resetState']),
     backgroundStyle (side, result) {
       const backgroundImage = side === 'starWars' ? result.starWars.photo : result.marvel.photo
 
@@ -67,6 +69,10 @@ export default {
         default:
           return { background: `url(${backgroundImage})` }
       }
+    },
+    reset () {
+      this.resetState()
+      this.$router.push('/')
     }
   }
 }
@@ -91,8 +97,32 @@ header {
   a {
     color: white;
     text-decoration: none;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &:hover {
+      background-color: white;
+      color: #4CAF50;
+    }
+  }
+
+  .back {
     position: absolute;
     left: 15px;
+    text-align: center;
+
+    i {
+      margin-right: 5px;
+    }
+  }
+
+  .reset {
+    position: absolute;
+    right: 15px;
   }
 }
 
@@ -110,9 +140,10 @@ ul {
       background-color: #333;
       color: white;
 
-      h3 {
+      h2 {
         text-align: center;
         text-transform: uppercase;
+        font-size: 35px;
       }
     }
 
@@ -158,6 +189,7 @@ ul {
           text-transform: uppercase;
           font-family: 'Avenir', sans-serif;
           font-weight: bold;
+          text-align: center;
         }
       }
     }

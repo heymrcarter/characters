@@ -13,11 +13,17 @@ const store = new Vuex.Store({
   actions: {
     addResult ({ commit }, result) {
       commit('ADD_RESULT', result)
+    },
+    resetState ({ commit }) {
+      commit('RESET_STATE')
     }
   },
   mutations: {
     ADD_RESULT (state, result) {
       state.results.push(result)
+    },
+    RESET_STATE (state) {
+      state.results = []
     }
   }
 })

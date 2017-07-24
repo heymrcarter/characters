@@ -195,6 +195,10 @@ export default {
     color: white;
     text-decoration: none;
     font-size: 24px;
+
+    &:hover {
+      text-decoration: underline
+    }
   }
 }
 .slideup-enter-active, .slideup-leave-active {
