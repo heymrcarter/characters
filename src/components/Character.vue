@@ -1,5 +1,5 @@
 <template>
-  <div class="character flex-column" :class="{selected}" :style="{'background-image': `url(${character.photo})`}">
+  <div class="character flex-column" :class="backgroundTint()" :style="{'background-image': `url(${character.photo})`}">
     <h2 @mouseover="sayName()">{{ character.name }}</h2>
   </div>
 </template>
@@ -11,13 +11,18 @@ export default {
     return {
     }
   },
-  props: ['character', 'voice', 'selected'],
-  components: { },
+  props: ['character', 'voice', 'bgTint'],
   methods: {
     sayName () {
       var utterance = new SpeechSynthesisUtterance(this.character.name)
       utterance.voice = this.voice
       window.speechSynthesis.speak(utterance)
+    },
+    backgroundTint () {
+      const classObj = {}
+      classObj[this.bgTint] = true
+
+      return classObj
     }
   }
 }
@@ -27,15 +32,20 @@ export default {
 @import '../../static/less/common.less';
 
 .character {
-  border: solid 3px black;
   justify-content: flex-end;
   align-items: center;
   padding-bottom: 60px;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  &.selected {
-    background-color: #a00;
+  &.blue-tint {
+    background-color: rgba(33,150,243, 1);
+  }
+  &.red-tint {
+    background-color: rgba(244,67,54, 1);
+  }
+  &.green-tint {
+    background-color: rgba(76,175,80, 1);
   }
   &:hover {
     h2 {
