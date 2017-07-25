@@ -1,0 +1,41 @@
+What is Vuejs
+show app
+
+vue cli
+	Webpack
+	babel
+	testing
+  hot-reload
+
+Components
+  <template>
+  <script>
+  <style>
+
+<template> basics
+	Dynamic content
+	v-if
+	v-for
+	v-model
+	@event
+	:bind
+
+<script> basics
+	data
+	props
+	computed props
+	watch
+	methods
+	lifecycle hooks
+	(child) components
+
+<style> basics
+	scoped
+  less/sass
+
+Routing
+
+State
+
+Extendable
+Testable
