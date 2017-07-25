@@ -6,8 +6,8 @@
         <character class='vfull' :voice='voice' :character='starWars' :bg-tint="backgroundTint('starWars')"></character>
       </div>
       <div class='vs-container'>
-        <div class='vs pulse'>VS</div>
         <a @click="characterSelected([starWars, marvel])" class="both">Both</a>
+        <div class='vs pulse'>VS</div>
         <a @click="characterSelected()" class="neither">Neither</a>
       </div>
       <div @click='characterSelected(marvel)' class='flex-one vfull'>
@@ -175,8 +175,12 @@ export default {
     cursor: pointer;
     text-shadow: 0px 0px 7px black;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+    transition: transform 0.4s;
     &.neither {
       background-color: #F44336;
+    }
+    &:hover {
+      transform: translateX(-50%) scale(1.2);
     }
   }
 }
