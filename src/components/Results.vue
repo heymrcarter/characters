@@ -13,7 +13,7 @@
         <div class="matchup">
           <div class="contestant starwars flex-one" :style="backgroundStyle('starWars', result)">
             <p class="name">
-              {{ result.starWars.name }} 
+              {{ result.starWars.name }}
               <i v-if="result.winner === 'STARWARS'" class="fa fa-check"></i>
               <i v-if="result.winner === 'BOTH'" class="fa fa-minus"></i>
               <i v-if="result.winner === 'NEITHER'" class="fa fa-close"></i>
@@ -24,7 +24,7 @@
           </div>
           <div class="contestant marvel flex-one" :style="backgroundStyle('marvel', result)">
             <p class="name">
-              {{ result.marvel.name }} 
+              {{ result.marvel.name }}
               <i v-if="result.winner === 'MARVEL'" class="fa fa-check"></i>
               <i v-if="result.winner === 'BOTH'" class="fa fa-minus"></i>
               <i v-if="result.winner === 'NEITHER'" class="fa fa-close"></i>
